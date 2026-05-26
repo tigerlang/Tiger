@@ -1,0 +1,35 @@
+import http
+import gui
+
+var quote_count = 0
+var stats = {"fetched": 0, "errors": 0}
+
+fetch_and_display() {
+    var zen = http.get("https://api.github.com/zen")
+    print("Quote " + str.to_str(quote_count + 1) + ": " + zen)
+    quote_count += 1
+    stats["fetched"] += 1
+}
+
+show_summary() {
+    print("")
+    print("=== Summary ===")
+    print("Total fetched: " + str.to_str(stats["fetched"]))
+    print("Quote count: " + str.to_str(quote_count))
+}
+
+main() {
+    gui.window("GitHub Zen Collector", 400, 300)
+    
+    var i = 0
+    while (i < 3) {
+        fetch_and_display()
+        i += 1
+    }
+    
+    show_summary()
+    
+    print("")
+    print("GUI window opening...")
+    gui.run()
+}

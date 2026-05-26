@@ -1,0 +1,102 @@
+Tiger v0.3 (05/18/2026, unstable/not applicable): 
+Added: 
+- Optional static typing (x: int = 5), added Type Checker for statics. Static typing is not required, but is desirable when scaling a program on Tiger 
+
+- Fixed a bug with global variables. 
+
+- Compiler and CLI name changed from 'tigrc' to 'tiger' 
+
+- Dictionary support (dict): var config = {"key": value}. Values ​​can be any type (int, float, string, bool, list). Translated to std::map<std::string, std::any>. Access by key: config["key"] 
+
+- Fixed C++ generator for dictionaries: now uses list initialization {} 
+
+- Fixed -municode flag in g++ (removed, not supported by MinGW 6.3) 
+
+--- 
+
+Tiger 0.4 (05/21/2026, unstable/not applicable) 
+Added: 
+- New random library: random(), randint(), int_range(), float_range(), seed() 
+
+- Expanded http library: 
+- http.post(url, data) — sending a POST request 
+- http.get_status(url) — getting HTTP status 
+
+- Expanded gui library: 
+- gui.label(text) — text label 
+- gui.entry(name) — text input field 
+
+- Fixed bugs in the GUI: 
+- Fixed tiger_gui namespace for all widgets 
+- Fixed WndProc processing (static was removed for correct call) 
+- Fixed run() function (static removed) 
+- Improved compatibility with g++ (file encoding fixed) 
+
+1. Colored Labels 
+--------------- 
+gui.label_red(text) 
+gui.label_green(text) 
+gui.label_blue(text) 
+gui.label_yellow(text) 
+
+2. Colored Buttons with Callbacks 
+-------------------------------
+gui.button_red(text, callback) 
+gui.button_green(text, callback) 
+gui.button_blue(text, callback) 
+
+3.Positioned Widgets 
+------------------ 
+gui.label_at(x, y, width, height, text) 
+gui.button_at(x, y, width, height, text, callback) 
+
+
+- Fixed bugs in codegen.py: 
+- Fixed formatting in the _Templates class 
+- Added automatic connection of random.hpp to preamble 
+- Updated _GUI_ORDER with new label and entry widgets 
+
+--- 
+
+Tiger 0.4 Bug Fixes (introduced during testing): 
+- fixed: codegen.py - IndentationError in class _Templates (lines 52-67) 
+- fixed: GUI - all functions now correctly use namespace tiger_gui 
+- fixed: WndProc is no longer static to be a valid callback 
+- fixed: run() function is now callable 
+- fixed: encoding C++ files (added errors="replace" for g++ compatibility) 
+
+--- 
+
+Tiger v0.4.1 (05/23/2026, unstable/not applicable): 
+Added: 
+- for loops: for (item in collection) syntax for looping through lists, strings and other iterable objects 
+- String methods: 
+* str.trim(s) - remove spaces at the beginning and end of the line 
+* str.split(s) - splitting a string into a list of substrings (by spaces) 
+* str.startswith(s, prefix) - check for the start of a string with a prefix 
+* str.endswith(s, suffix) - checking the end of a string with a suffix 
+
+- Now the parentheses around the expressions of while, if/elif/else and for are OPTIONAL: 
+* Previously: 
+if (a == 5) {...} # Cannot remove parentheses 
+* In 0.4.2: 
+if a == 5 {...} # This is supported!
+- Now people who are accustomed to putting parentheses can do this, and those who are accustomed to Python can do as they wish in this regard. 
+
+Tiger v0.4.2 (05/25/2026): 
+Added: 
+
+- Fixed a bug with dictionaries: now any data types are accepted (int, float, string, bool, list), and not just numbers (double). Use std::any to store values. 
+- New built-in files library: 
+- files.create_dir(path) — creating a directory 
+- files.create_file(path) - file creation 
+- files.remove_dir(path) — removing a directory 
+- files.remove_file(path) — file removal 
+- files.list_dir(path) - returns a list of file and folder names 
+- files.read(path) - reading the contents of the file 
+- files.write(path, content) — writing data to a file 
+
+Tiger v0.4.3 (05.26.2026): 
+Added: 
+
+- New built-in cli library: arguments, text styling.

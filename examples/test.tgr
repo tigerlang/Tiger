@@ -1,0 +1,14 @@
+import files
+main() {
+    import files
+    # Создаём папку
+    files.create_dir("test_dir")
+
+    # Записываем файл
+    files.write("test_dir/test.txt", "Hello Tiger!")
+
+    # Читаем и печатаем
+    var content = files.read("test_dir/test.txt")
+    print(content)
+
+}

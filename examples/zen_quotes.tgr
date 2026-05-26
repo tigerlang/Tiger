@@ -1,0 +1,16 @@
+import http
+
+main() {
+    var quotes = {"total": 0}
+    
+    var i = 0
+    while (i < 3) {
+        var zen = http.get("https://api.github.com/zen")
+        quotes["total"] = quotes["total"] + 1
+        print("Quote " + str.to_str(i + 1) + ": " + zen)
+        i += 1
+    }
+    
+    print("")
+    print("Total quotes fetched: " + str.to_str(quotes["total"]))
+}

@@ -1,0 +1,25 @@
+# GitHub Zen Quotes fetcher
+import http
+
+main() {
+    print("=== GitHub Zen Quotes ===")
+    print("")
+    
+    var url: string = "https://api.github.com/zen"
+    
+    var i: int = 0
+    while (i < 5) {
+        var quote: string = http.get(url)
+        
+        print("Quote #" + str.to_str(i + 1) + ":")
+        print("  Original: " + quote)
+        print("  Upper:    " + str.upper(quote))
+        print("  Lower:    " + str.lower(quote))
+        print("  Length:   " + str.to_str(str.len(quote)) + " chars")
+        print("")
+        
+        i += 1
+    }
+    
+    print("Done!")
+}

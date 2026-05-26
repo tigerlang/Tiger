@@ -1,0 +1,11 @@
+# Tiger v0.4 - Time Demo
+import time
+
+main() {
+    print("Current timestamp: " + str.to_str(time.timestamp()))
+    print("Current datetime: " + time.now())
+    print("Date: " + time.date())
+    print("Time: " + time.time_only())
+    time.sleep(1000)
+    print("After 1 second sleep")
+}

@@ -1,0 +1,12 @@
+import cli
+
+var name: string = cli.get("name", "default")
+var count: int = cli.get_int("count", 3)
+
+cli.success("Hello from Tiger!")
+cli.info("Loading data...")
+cli.warning("This is a warning")
+cli.error("Something went wrong!")
+cli.debug("Variable x = 42")
+
+cli.info("Name: " + name + ", Count: " + str.to_str(count))

@@ -1,0 +1,33 @@
+# test_all.tgr
+# Exercises: lists, str.upper/lower, .tgr import
+
+import mathlib
+
+main() {
+    # ── Fix 1 & 2: list literals ──────────────────────────────────
+    # Mixed int+float → common_type = double
+    var nums   = [1, 2, 3, 4, 5]
+    # All strings
+    var words  = ["hello", "world", "tiger"]
+    # Empty list → make_vec<int>()
+    var empty  = []
+
+    print("nums[2]  =", nums[2])
+    print("words[0] =", words[0])
+
+    # ── Fix 3: str.upper / str.lower ──────────────────────────────
+    var s = "Hello, Tiger!"
+    print("upper:", str.upper(s))
+    print("lower:", str.lower(s))
+    print("len:  ", str.len(s))
+
+    var n = 42
+    print("to_str:", str.to_str(n))
+
+    # ── Fix 4: .tgr import ────────────────────────────────────────
+    var sq = square(7)
+    print("square(7) =", sq)
+
+    var clamped = clamp(150, 0, 100)
+    print("clamp(150,0,100) =", clamped)
+}

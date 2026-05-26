@@ -1,0 +1,23 @@
+import cli
+import files
+
+main() {
+    if cli.has("help") {
+        cli.help("myapp", "[--name=<name>] [--file=<path>]")
+        return
+    }
+    
+    var name = cli.get("name", "world")
+    cli.success("Hello, " + name + "!")
+    
+    if cli.has("file") {
+        var path = cli.get("file", "")
+        if files.exists(path) {  # добавить exists?
+            cli.info(files.read(path))
+        }
+    }
+    
+    if cli.has("verbose") {
+        cli.debug("Debug mode enabled")
+    }
+}

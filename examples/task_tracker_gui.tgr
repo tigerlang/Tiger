@@ -1,0 +1,83 @@
+import gui
+import time
+
+# Global dictionary to store task data: {task_name: completed_count}
+var task_data = {"setup": 0, "design": 0, "coding": 0, "testing": 0, "deploy": 0}
+var current_task = "setup"
+var task_index = 0
+
+# Task name lookup using if-else
+get_task_name(idx) {
+    if (idx == 0) {
+        return "setup"
+    }
+    if (idx == 1) {
+        return "design"
+    }
+    if (idx == 2) {
+        return "coding"
+    }
+    if (idx == 3) {
+        return "testing"
+    }
+    return "deploy"
+}
+
+create_ui() {
+    gui.window("Task Tracker - GUI + Dict + Time", 500, 400)
+    gui.label("=== Task Progress Tracker ===")
+    gui.label("Current time: " + time.now())
+    gui.label("Date: " + time.date())
+    gui.label("Active task: " + current_task)
+}
+
+update_display() {
+    gui.label("=== Task Stats ===")
+    gui.label("Current: " + current_task)
+    gui.label("Completed: " + str.to_str(task_data[current_task]))
+    gui.label("Timestamp: " + time.time_only())
+}
+
+go_next() {
+    task_index += 1
+    if (task_index > 4) {
+        task_index = 0
+    }
+    current_task = get_task_name(task_index)
+}
+
+go_prev() {
+    task_index -= 1
+    if (task_index < 0) {
+        task_index = 4
+    }
+    current_task = get_task_name(task_index)
+}
+
+complete() {
+    task_data[current_task] += 1
+    gui.label(current_task + " done! Count: " + str.to_str(task_data[current_task]))
+}
+
+reset_all() {
+    task_data["setup"] = 0
+    task_data["design"] = 0
+    task_data["coding"] = 0
+    task_data["testing"] = 0
+    task_data["deploy"] = 0
+    task_index = 0
+    current_task = "setup"
+    gui.label("All tasks reset")
+}
+
+main() {
+    create_ui()
+    update_display()
+    gui.label("")
+    gui.label("Navigation:")
+    gui.button("Previous Task")
+    gui.button("Complete Task")
+    gui.button("Next Task")
+    gui.button("Reset All")
+    gui.run()
+}

@@ -1,0 +1,31 @@
+# Tiger v0.4 - Mega App: Zen + Random + GUI
+import random
+import gui
+import http
+
+main() {
+    # Show window
+    gui.window("GitHub Zen + Random", 500, 400)
+    
+    # Fetch zen from GitHub
+    var zen = http.get("https://api.github.com/zen")
+    gui.label("GitHub Zen:")
+    gui.label(zen)
+    
+    # Show random numbers section
+    gui.label("Random Numbers:")
+    var num1 = random.randint(100)
+    gui.label("randint(100): " + str.to_str(num1))
+    
+    var dice = random.int_range(1, 6)
+    gui.label("dice (1-6): " + str.to_str(dice))
+    
+    var frac = random.float_range(0.0, 1.0)
+    gui.label("float (0-1): " + str.to_str(frac))
+    
+    gui.label("buttons:")
+    gui.button("заново")
+    gui.button("очистить")
+    
+    gui.run()
+}

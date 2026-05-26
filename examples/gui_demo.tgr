@@ -1,0 +1,39 @@
+import gui
+
+var clickCount = 0
+
+handleClick() {
+    clickCount += 1
+    print("Кнопка нажата! Всего кликов: " + str.to_str(clickCount))
+}
+
+handleOk() {
+    print("OK нажат!")
+}
+
+handleCancel() {
+    print("Отмена!")
+}
+
+main() {
+    gui.window("GUI Demo - All Features", 600, 500)
+    
+    # Цветные метки с позиционированием
+    gui.label_ex(20, 20, 200, 30, "Демонстрация GUI v0.4", "blue", "white")
+    gui.label_ex(20, 60, 200, 30, "Цветные кнопки ниже", "black", "yellow")
+    
+    # Цветные кнопки с callback
+    gui.button_colored("Нажми меня", "green", "white", handleClick)
+    gui.button_colored("Стоп", "red", "white", handleCancel)
+    
+    # Кнопки с позиционированием и цветом
+    gui.button_ex(250, 200, 100, 40, "OK", "blue", "white", handleOk)
+    gui.button_ex(370, 200, 100, 40, "Cancel", "gray", "white", handleCancel)
+    gui.button_ex(490, 200, 100, 40, "Exit", "black", "white", handleCancel)
+    
+    # Позиционированные метки
+    gui.label_ex(250, 260, 150, 30, "Status: Ready", "green", "white")
+    gui.label_ex(250, 300, 200, 30, "Count: 0", "magenta", "white")
+    
+    gui.run()
+}
