@@ -2,7 +2,7 @@
 
 > **Version 0.4.3** – A simple, compiled language with Python‑like syntax that transpiles to C++.
 
-Tiger is a statically typed (but optionally) language designed for small to medium scripts and GUI applications.  
+Tiger is a statically typed (but optionally) language. 
 Your `.tgr` source is translated to C++20 and then compiled into a native executable.
 
 ---
